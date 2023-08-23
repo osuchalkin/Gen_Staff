@@ -1,0 +1,17 @@
+{% extends "losses/base.html" %}
+
+{% block page_header %}
+    <h1>Monthly charts</h1>
+{% endblock page_header %}
+
+{% block content %}
+    <ul>
+        {% for header in headers %}
+        <li>
+            <h4> <a href="{% url 'losses:header' header.id %}">{{ header }}</a> <h4>
+        </li>
+        {% empty %}
+            <li><h>No data.</h3></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

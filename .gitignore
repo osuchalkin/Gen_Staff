@@ -1,0 +1,11 @@
+*.pyc
+*~
+/losses/__pycache__
+/genshtab/__pycache__
+/bin
+db.sqlite3
+genshtab.xlsx
+/include
+/lib
+/lib64
+pyvenv.cfg

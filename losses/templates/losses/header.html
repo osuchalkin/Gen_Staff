@@ -1,0 +1,64 @@
+{% extends "losses/base.html" %}
+
+{% block page_header %}
+    <h2>{{ header }} - {{total}}</h2>
+{% endblock page_header %}
+
+{% block content %}
+    
+    <div id="container" style="width:100%; height:400px;"></div>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function () {
+        var times = {{ months|safe }}
+        var data = {{ datas|safe }}   
+        const chart = Highcharts.chart('container', {
+    
+        title: {
+            text: ' ',
+            align: 'left'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Amount'
+            }
+        },
+
+        xAxis: {
+            title: {
+                text: 'Months'
+            },
+            categories: times
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        series: [{
+            name: '{{ header }}',
+            data: data
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+        })
+            });       
+    </script>
+{% endblock content %}
